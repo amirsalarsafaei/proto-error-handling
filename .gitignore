@@ -1,0 +1,31 @@
+# Python
+**/venv/
+**/__pycache__/
+**/*.py[cod]
+**/*.so
+**/dist/
+**/build/
+**/*.egg-info/
+**/.eggs/
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+
+# Go
+**/go.sum
+**/*.exe
+**/*.exe~
+**/*.dll
+**/*.so
+**/*.dylib
+**/*.test
+**/*.out
+
+# IDE
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo
+
+# Rust
+**/target/

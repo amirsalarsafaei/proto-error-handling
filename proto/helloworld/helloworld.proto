@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package hello_world;
+
+option go_package = "github.com/amirsalarsafaei/proto-error-handling/go/helloworld;helloworld";
+
+
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc CreateUserAlt(CreateUserRequest) returns (CreateUserAltResponse) {}
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+}
+
+message CreateUserResponse {
+  string user_id = 1;
+  UserStatus status = 2;
+}
+
+message CreateUserAltResponse {
+  oneof result {
+    UserData success = 1;
+    ErrorDetails error = 2;
+  }
+}
+
+message UserData {
+  string user_id = 1;
+  UserStatus status = 2;
+}
+
+message ErrorDetails {
+  string code = 1;
+  string message = 2;
+}
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_PENDING = 2;
+}
