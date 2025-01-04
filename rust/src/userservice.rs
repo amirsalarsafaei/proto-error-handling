@@ -143,7 +143,7 @@ impl UserService for UserServiceImpl {
                 Code::Internal,
                 "could not create user",
                 ErrorDetails::with_error_info(
-                    "cou",
+                    "could not create user",
                     "hello_world.UserService",
                     vec![
                         ("error_type".to_string(), "database_error".to_string()),

@@ -31,23 +31,23 @@ func (s *userService) CreateUser(
 
 		var violations []*errdetails.BadRequest_FieldViolation
 
-		switch err {
-		case ErrEmptyUsername:
+		switch {
+		case errors.Is(err, ErrEmptyUsername):
 			violations = append(violations, &errdetails.BadRequest_FieldViolation{
 				Field:       "username",
 				Description: "Username cannot be empty",
 			})
-		case ErrEmptyEmail:
+		case errors.Is(err, ErrEmptyEmail):
 			violations = append(violations, &errdetails.BadRequest_FieldViolation{
 				Field:       "email",
 				Description: "Email cannot be empty",
 			})
-		case ErrInvalidEmail:
+		case errors.Is(err, ErrInvalidEmail):
 			violations = append(violations, &errdetails.BadRequest_FieldViolation{
 				Field:       "email",
 				Description: "Invalid email format",
 			})
-		case ErrUsernameTooLong:
+		case errors.Is(err, ErrUsernameTooLong):
 			violations = append(violations, &errdetails.BadRequest_FieldViolation{
 				Field:       "username",
 				Description: "Username exceeds maximum length",
