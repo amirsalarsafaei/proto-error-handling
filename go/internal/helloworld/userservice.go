@@ -55,7 +55,9 @@ func (s *userService) CreateUser(
 		}
 
 		br := &errdetails.BadRequest{FieldViolations: violations}
-		st, err = st.WithDetails(br)
+		st, err = st.WithDetails(br, &errdetails.ErrorInfo{
+			Reason: "VALIDATION_FAILED",
+		})
 		if err != nil {
 			return nil, status.Error(codes.Internal, "Failed to add error details")
 		}
